@@ -2,6 +2,10 @@ const router = require("express").Router();
 
 const Tasks = require("./taskModel");
 
+//middleware
+const validateDescrition = require("../middlewares/validateDescription");
+const validateProjectId = require("../middlewares/validateProjectId");
+
 router.get("/", (req, res) => {
   Tasks.getTasks()
     .then(tasks => {
@@ -16,7 +20,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", validateProjectId, validateDescrition, (req, res) => {
   const data = req.body;
   Tasks.addTask(data)
     .then(task => {

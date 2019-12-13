@@ -2,6 +2,9 @@ const router = require("express").Router();
 
 const Projects = require("./projectModel");
 
+// middlewares
+const bodyValidation = require("../middlewares/validateProjectBody");
+
 router.get("/", (req, res) => {
   Projects.getProjects()
     .then(projects => {
@@ -16,7 +19,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", bodyValidation, (req, res) => {
   const data = req.body;
   Projects.addProject(data)
     .then(project => {
