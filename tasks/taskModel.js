@@ -1,9 +1,9 @@
 const db = require("../data/dbConfig");
 
-const getProjects = () => {
-  return db("projects");
+const getTasks = () => {
+  return db("tasks");
 };
 
 module.exports = {
-  getProjects
+  getTasks
 };

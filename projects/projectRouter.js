@@ -16,18 +16,4 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/resources", (req, res) => {
-  Projects.getResources()
-    .then(resources => {
-      if (resources) {
-        res.status(200).json(resources);
-      } else {
-        res.status(404).json({ message: "We don't have any resources" });
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ error: "server error", err });
-    });
-});
-
 module.exports = router;
