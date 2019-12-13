@@ -1,3 +1,14 @@
 const db = require("../data/dbConfig");
 
-module.exports = {};
+const getResources = () => {
+  return db("resources");
+};
+
+const getProjects = () => {
+  return db("projects");
+};
+
+module.exports = {
+  getResources,
+  getProjects
+};
